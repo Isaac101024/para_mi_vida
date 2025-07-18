@@ -138,19 +138,48 @@
     audio {
       display: none;
     }
+
+    /* Mensaje flotante */
+    #sorpresa {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 248, 251, 0.95);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 600px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #b03060;
+      text-align: center;
+      display: none;
+      animation: aparecerMensaje 0.8s ease forwards;
+    }
+
+    @keyframes aparecerMensaje {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <h1>Para ti, Kamyla ❤️</h1>
     <p id="mensaje"></p>
-    <button id="botonVerMas" onclick="alert('Pronto habrá otra sorpresa 💫')">Ver más</button>
+    <button id="botonVerMas">Para tu siguiente sorpresa 💫</button>
   </div>
 
   <audio autoplay loop>
     <source src="cancion.mp3" type="audio/mpeg" />
-    Tu navegador no soporta audio HTML5.
   </audio>
+
+  <div id="sorpresa">
+    ¿Lo viste? Esa historia no solo se parece a la nuestra... parece escrita para nosotros.  
+    <br><br>
+    Si hay un hilo que une almas, quiero que el mío esté atado al tuyo.
+  </div>
 
   <script>
     for (let i = 0; i < 15; i++) {
@@ -164,17 +193,7 @@
 
     const mensaje = `Hola Kamyla, la verdad no sé cómo empezar esto, no soy muy bueno creando cartas; espero te guste esta jsjsj.
 
-Aún recuerdo cómo me sentí la primera vez que te vi, me sentí confundido y feliz al mismo tiempo. Muchas veces me dijeron que los tiempos de Dios eran perfectos, y si te soy sincero, siempre lo creí, pero pensé que esos tiempos nunca me pasarían a mí... hasta que te vi.
-
-La primera vez que te hablé estaba muy nervioso, creo que hasta lo notaste jeje. Pero Luis me dio ese impulso de hablarte, y créeme, iba con el corazón en la mano, pensando qué te iba a decir. Pero cuando escuché tu voz por primera vez, me enamoré de ella, me enamoré de tus ojos cuando me vieron, de tu sonrisa cuando la vi... simplemente me enamoré de ti.
-
-Me fue imposible evitar pensar en ti toda la noche, con ansias de volver a verte, hablarte y verte sonreír. Y esa noche lo que sentía, y lo que sigo sintiendo por ti fue muy claro: yo quería esa sonrisa y esa risa siempre conmigo. Me enamoré perdidamente de ti.
-
-La verdad no sé qué pensaste tú de mí en esa ocasión, pero yo no pude evitar imaginar cómo sería si fuéramos algo más que amigos. Y gracias a Luis y a todas las loquillas del salón jsjsj, me armé de valor para mirarte a esos hermosos ojos y pedirte que seas mi novia.
-
-Te agradezco demasiado por querer recorrer este camino conmigo. Me ayudaste a salir de muchos pensamientos malos que tenía en ese momento, donde mi mundo se vino encima mío... y me sigues salvando de muchas cosas, mi niña.
-
-En todo este año que he pasado a tu lado he sido muy feliz junto a ti. Me viste llorar, reír, enojarme, hasta pelear con profes jsjsj y siempre estuviste conmigo.`;
+Aún recuerdo cómo me sentí la primera vez que te vi, me sentí confundido y feliz al mismo tiempo...`;
 
     const mensajeElem = document.getElementById('mensaje');
     const boton = document.getElementById('botonVerMas');
@@ -197,22 +216,20 @@ En todo este año que he pasado a tu lado he sido muy feliz junto a ti. Me viste
 
     window.onload = escribir;
 
-    // Activar audio aunque el navegador bloquee autoplay
     const audio = document.querySelector('audio');
-
-    function intentarReproducir() {
-      audio.play().then(() => {
-        console.log("🎵 Música reproducida");
-      }).catch(() => {
-        console.log("Autoplay bloqueado, esperando interacción");
+    window.addEventListener('load', () => {
+      audio.play().catch(() => {
         document.body.addEventListener('click', () => {
           audio.play();
-          console.log("🎵 Música activada por el usuario");
         }, { once: true });
       });
-    }
+    });
 
-    window.addEventListener('load', intentarReproducir);
+    // Mostrar mensaje sorpresa al hacer clic
+    boton.addEventListener('click', () => {
+      document.getElementById('sorpresa').style.display = 'block';
+      boton.style.display = 'none';
+    });
   </script>
 </body>
 </html>
