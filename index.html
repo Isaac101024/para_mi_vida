@@ -29,11 +29,6 @@
       animation: fadeIn 1.5s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     h1 {
       font-family: 'Brush Script MT', cursive;
       font-size: 2.2rem;
@@ -63,16 +58,6 @@
       }
     }
 
-    #mensaje.brillando span:last-child {
-      animation: parpadeo 0.8s ease-in-out infinite;
-    }
-
-    @keyframes parpadeo {
-      0% { opacity: 1; text-shadow: 0 0 2px #ffc0cb; }
-      50% { opacity: 0.6; text-shadow: 0 0 12px #ff69b4; }
-      100% { opacity: 1; text-shadow: 0 0 2px #ffc0cb; }
-    }
-
     #botonVerMas {
       display: none;
       margin-top: 30px;
@@ -83,14 +68,8 @@
       border-radius: 20px;
       cursor: pointer;
       font-size: 1rem;
-      transition: transform 0.3s ease, background-color 0.3s ease;
       width: 100%;
       animation: pulse 1.5s infinite;
-    }
-
-    #botonVerMas:hover {
-      background-color: #a0522d;
-      transform: scale(1.05);
     }
 
     @keyframes pulse {
@@ -115,37 +94,16 @@
       100% { transform: translateY(0) scale(1); }
     }
 
-    @media (max-width: 700px) {
-      .card {
-        padding: 20px;
-        max-width: 90%;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-      }
-
-      #mensaje {
-        font-size: 1rem;
-      }
-
-      #botonVerMas {
-        font-size: 0.95rem;
-        padding: 12px 20px;
-      }
-    }
-
     audio {
       display: none;
     }
 
-    /* Mensaje flotante */
     #sorpresa {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(255, 248, 251, 0.95);
+      background: rgba(255, 248, 251, 0.96);
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -193,7 +151,17 @@
 
     const mensaje = `Hola Kamyla, la verdad no sé cómo empezar esto, no soy muy bueno creando cartas; espero te guste esta jsjsj.
 
-Aún recuerdo cómo me sentí la primera vez que te vi, me sentí confundido y feliz al mismo tiempo...`;
+Aún recuerdo cómo me sentí la primera vez que te vi, me sentí confundido y feliz al mismo tiempo. Muchas veces me dijeron que los tiempos de Dios eran perfectos, y si te soy sincero, siempre lo creí, pero pensé que esos tiempos nunca me pasarían a mí... hasta que te vi.
+
+La primera vez que te hablé estaba muy nervioso, creo que hasta lo notaste jeje. Pero Luis me dio ese impulso de hablarte, y créeme, iba con el corazón en la mano, pensando qué te iba a decir. Pero cuando escuché tu voz por primera vez, me enamoré de ella, me enamoré de tus ojos cuando me vieron, de tu sonrisa cuando la vi... simplemente me enamoré de ti.
+
+Me fue imposible evitar pensar en ti toda la noche, con ansias de volver a verte, hablarte y verte sonreír. Y esa noche lo que sentía, y lo que sigo sintiendo por ti fue muy claro: yo quería esa sonrisa y esa risa siempre conmigo. Me enamoré perdidamente de ti.
+
+La verdad no sé qué pensaste tú de mí en esa ocasión, pero yo no pude evitar imaginar cómo sería si fuéramos algo más que amigos. Y gracias a Luis y a todas las loquillas del salón jsjsj, me armé de valor para mirarte a esos hermosos ojos y pedirte que seas mi novia.
+
+Te agradezco demasiado por querer recorrer este camino conmigo. Me ayudaste a salir de muchos pensamientos malos que tenía en ese momento, donde mi mundo se vino encima mío... y me sigues salvando de muchas cosas, mi niña.
+
+En todo este año que he pasado a tu lado he sido muy feliz junto a ti. Me viste llorar, reír, enojarme, hasta pelear con profes jsjsj y siempre estuviste conmigo.`;
 
     const mensajeElem = document.getElementById('mensaje');
     const boton = document.getElementById('botonVerMas');
@@ -209,7 +177,6 @@ Aún recuerdo cómo me sentí la primera vez que te vi, me sentí confundido y f
         index++;
         setTimeout(escribir, velocidad);
       } else {
-        mensajeElem.classList.add('brillando');
         boton.style.display = 'block';
       }
     }
@@ -225,7 +192,6 @@ Aún recuerdo cómo me sentí la primera vez que te vi, me sentí confundido y f
       });
     });
 
-    // Mostrar mensaje sorpresa al hacer clic
     boton.addEventListener('click', () => {
       document.getElementById('sorpresa').style.display = 'block';
       boton.style.display = 'none';
@@ -233,3 +199,4 @@ Aún recuerdo cómo me sentí la primera vez que te vi, me sentí confundido y f
   </script>
 </body>
 </html>
+
