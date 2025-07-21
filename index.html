@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Feliz primer año de muchos, mi niña 💖</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Dancing+Script&display=swap');
+
     body {
       margin: 0;
       background: linear-gradient(to bottom right, #fff0f5, #f9f5f1);
-      font-family: 'Georgia', serif;
+      font-family: 'Quicksand', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,17 +22,37 @@
     }
 
     .card {
+      position: relative;
       background: white;
       padding: 30px 40px;
       max-width: 650px;
       border-radius: 25px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-      position: relative;
       animation: fadeIn 1.5s ease;
     }
 
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border-radius: 30px;
+      background: none;
+      border: 3px solid red;
+      z-index: -1;
+      animation: dibujarHilo 2.5s ease forwards;
+      box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+    }
+
+    @keyframes dibujarHilo {
+      0% { border-width: 0px; opacity: 0; }
+      100% { border-width: 3px; opacity: 1; }
+    }
+
     h1 {
-      font-family: 'Brush Script MT', cursive;
+      font-family: 'Dancing Script', cursive;
       font-size: 2.2rem;
       color: #d2691e;
       margin-bottom: 25px;
@@ -76,22 +98,6 @@
       0% { transform: scale(1); }
       50% { transform: scale(1.03); }
       100% { transform: scale(1); }
-    }
-
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 80%, 20% 100%, 0% 35%);
-      animation: float 6s infinite ease-in-out;
-      opacity: 0.3;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-100px) scale(1.2); }
-      100% { transform: translateY(0) scale(1); }
     }
 
     audio {
@@ -140,15 +146,6 @@
   </div>
 
   <script>
-    for (let i = 0; i < 15; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.top = Math.random() * 100 + 'vh';
-      heart.style.animationDelay = Math.random() * 5 + 's';
-      document.body.appendChild(heart);
-    }
-
     const mensaje = `Hola Kamyla, la verdad no sé cómo empezar esto, no soy muy bueno creando cartas; espero te guste esta jsjsj.
 
 Aún recuerdo cómo me sentí la primera vez que te vi, me sentí confundido y feliz al mismo tiempo. Muchas veces me dijeron que los tiempos de Dios eran perfectos, y si te soy sincero, siempre lo creí, pero pensé que esos tiempos nunca me pasarían a mí... hasta que te vi.
@@ -199,4 +196,5 @@ En todo este año que he pasado a tu lado he sido muy feliz junto a ti. Me viste
   </script>
 </body>
 </html>
+
 
